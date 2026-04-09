@@ -1,5 +1,6 @@
 # AbletonMCP - Ableton Live Model Context Protocol Integration
-[![smithery badge](https://smithery.ai/badge/@ahujasid/ableton-mcp)](https://smithery.ai/server/@ahujasid/ableton-mcp)
+
+> **Fork notice:** This is a fork of [`ahujasid/ableton-mcp`](https://github.com/ahujasid/ableton-mcp) extending it with a 33-personality style system and ~35 additional MCP tools. The original project is by [Siddharth Ahuja](https://x.com/sidahuj) and remains MIT-licensed. This fork is published to PyPI as **`ableton-mcp-lofifren`**.
 
 AbletonMCP connects Ableton Live to Claude AI through the Model Context Protocol (MCP), allowing Claude to directly interact with and control Ableton Live. This integration enables prompt-assisted music production, track creation, and Live session manipulation.
 
@@ -174,13 +175,7 @@ The system consists of two main components:
 
 ## Installation
 
-### Installing via Smithery
-
-To install Ableton Live Integration for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@ahujasid/ableton-mcp):
-
-```bash
-npx -y @smithery/cli install @ahujasid/ableton-mcp --client claude
-```
+> **Note:** the upstream `@ahujasid/ableton-mcp` Smithery listing and the `ableton-mcp` PyPI package install the *original* project, not this fork — they will not include the personality system or any of the ~35 additional tools added here. Use the install instructions below to get this fork.
 
 ### Prerequisites
 
@@ -209,19 +204,23 @@ Otherwise, install from [uv's official website][https://docs.astral.sh/uv/gettin
         "AbletonMCP": {
             "command": "uvx",
             "args": [
-                "ableton-mcp"
+                "--from",
+                "git+https://github.com/LofiFren/ableton-mcp-lofifren.git",
+                "ableton-mcp-lofifren"
             ]
         }
     }
 }
 ```
 
+This installs the fork directly from GitHub on first run. Once `ableton-mcp-lofifren` is published to PyPI you can simplify this to just `"args": ["ableton-mcp-lofifren"]`.
+
 ### Cursor Integration
 
-Run ableton-mcp without installing it permanently through uvx. Go to Cursor Settings > MCP and paste this as a command:
+Run this fork without installing it permanently through uvx. Go to Cursor Settings > MCP and paste this as a command:
 
 ```
-uvx ableton-mcp
+uvx --from git+https://github.com/LofiFren/ableton-mcp-lofifren.git ableton-mcp-lofifren
 ```
 
 ⚠️ Only run one instance of the MCP server (either on Cursor or Claude Desktop), not both
